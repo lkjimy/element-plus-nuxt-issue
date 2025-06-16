@@ -1,2 +1,2 @@
-@use 'element-plus';
-@use 'element-plus-dark';
+@forward 'element-plus' as light-*;
+@forward 'element-plus-dark' as dark-*;

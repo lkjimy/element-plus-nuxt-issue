@@ -1,3 +1,8 @@
+  import { fileURLToPath } from 'url'
+  import { dirname, join } from 'path'
+
+  const currentDir = dirname(fileURLToPath(import.meta.url))
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -17,10 +22,11 @@ export default defineNuxtConfig({
         scss: {
           api: 'modern-compiler',
 
-          // TRY ANY SCSS FILE FROM ASSETS/SCSS HERE:
-          additionalData: `@use "#layers/ui/assets/scss/_element-plus.scss" as element;`,
-          // ALWAYS RESULTS IN AN ERROR...
-          // ERROR  Pre-transform error: [sass] Module loop: this module is already being loaded.
+          // NOW FIXED WITH currentDir
+          additionalData: `
+            @use "${join(currentDir, './assets/scss/element.scss')}" as el;
+            @use "${join(currentDir, './assets/scss/_variables.scss')}" as vars;
+          `,
         }
       }
     }

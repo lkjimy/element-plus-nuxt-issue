@@ -31,4 +31,7 @@
 </template>
 
 <style lang="scss">
+// Check your terminal:
+@debug vars.$some-color;
+@debug el.$light-colors;
 </style>
